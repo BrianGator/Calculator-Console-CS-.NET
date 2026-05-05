@@ -1,0 +1,46 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * Written by Brian McCarthy
+ */
+
+# Development Requirements - Personal Calculator project
+
+## Project Overview
+A professional C# console-based calculator application implementing core arithmetic operations with robust validation, extensive testing suites, and AI-assisted refinements.
+
+## File Descriptions
+
+### Core Application
+- **Program.cs**: Main entry point containing the calculator logic, input validation, and user interface. Written in C#.
+
+### Testing Frameworks (C# / .NET)
+- **Selenium-Tests/**: Automated UI tests using Selenium WebDriver for C#. Verifies user flows through a simulated console interface.
+- **Playwright-Tests/**: Modern end-to-end tests using Playwright for .NET.
+- **Cucumber-Tests/**: Behavior Driven Development (BDD) tests using SpecFlow (Cucumber for C#).
+- **Unit-Tests/**: Low-level logic verification using NUnit/xUnit.
+- **Integration-Tests/**: Verifies communication between different modules of the application.
+- **System-Tests/**: End-to-end verification of the entire application environment.
+- **Security-Tests/**: Verifies input sanitization and boundary safety.
+- **Performance-Tests/**: Benchmarking execution time for complex calculations.
+- **Load-Tests/**: Simulates high-frequency requests.
+- **Stress-Tests/**: Determines breaking points of the input buffer.
+
+### Testing Frameworks (Web/Frontend)
+- **Cypress-Tests/**: Web-based E2E tests (JavaScript/TypeScript).
+- **End-to-End-Tests/**: High-level user journey verification.
+
+### Documentation
+- **README.md**: Project documentation, usage guides, and test reports.
+- **Dev-Requirements.txt**: This file.
+- **metadata.json**: Project metadata for AI Studio.
+
+## Technologies Used
+- **C# / .NET**: Primary language for the console application and several test frameworks.
+- **React / Vite**: Used to host a simulated console environment in the preview.
+- **Tailwind CSS**: Styling for the project dashboard/simulator.
+- **Git**: Version control management.
+- **Selenium WebDriver**: Browser automation.
+- **Playwright**: Modern E2E testing framework.
+- **Cypress**: Frontend-specific E2E testing.
+- **Cucumber / SpecFlow**: Gherkin-based BDD testing.
