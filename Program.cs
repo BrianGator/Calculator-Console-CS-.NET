@@ -5,6 +5,8 @@
  */
 
 using System;
+using PersonalCalculator.Models;
+using PersonalCalculator.Helpers;
 
 namespace PersonalCalculator
 {
@@ -12,24 +14,27 @@ namespace PersonalCalculator
     {
         static void Main(string[] args)
         {
-            // Welcome message
+            CalculatorEngine engine = new CalculatorEngine();
+            
             Console.WriteLine("Welcome to Your Personal Calculator!");
             Console.WriteLine("===================================");
             
             try 
             {
-                // Task 2: Input Collection
                 Console.WriteLine("Please enter your first number:");
-                string input1 = Console.ReadLine();
-                double firstNumber = Convert.ToDouble(input1);
+                if (!InputValidator.TryParseDouble(Console.ReadLine(), out double firstNumber))
+                {
+                    Console.WriteLine("Invalid input. Numeric values only.");
+                    return;
+                }
 
                 Console.WriteLine("Please enter your second number:");
-                string input2 = Console.ReadLine();
-                double secondNumber = Convert.ToDouble(input2);
+                if (!InputValidator.TryParseDouble(Console.ReadLine(), out double secondNumber))
+                {
+                    Console.WriteLine("Invalid input. Numeric values only.");
+                    return;
+                }
 
-                Console.WriteLine($"You entered: {firstNumber} and {secondNumber}");
-
-                // Task 3: Menu System
                 Console.WriteLine("\nChoose an operation:");
                 Console.WriteLine("1. Addition (+)");
                 Console.WriteLine("2. Subtraction (-)");
@@ -38,55 +43,29 @@ namespace PersonalCalculator
                 Console.WriteLine("5. Modulus (%)");
                 Console.Write("Enter your choice (1-5): ");
 
-                string choiceInput = Console.ReadLine();
-                int choice = int.Parse(choiceInput);
-
-                // Task 4: Calculation Logic
-                double result = 0;
-                string operation = "";
-
-                if (choice == 1)
-                {
-                    result = firstNumber + secondNumber;
-                    operation = "+";
-                }
-                else if (choice == 2)
-                {
-                    result = firstNumber - secondNumber;
-                    operation = "-";
-                }
-                else if (choice == 3)
-                {
-                    result = firstNumber * secondNumber;
-                    operation = "*";
-                }
-                else if (choice == 4)
-                {
-                    if (secondNumber == 0)
-                    {
-                        Console.WriteLine("Error: Cannot divide by zero.");
-                        return;
-                    }
-                    result = firstNumber / secondNumber;
-                    operation = "/";
-                }
-                else if (choice == 5)
-                {
-                    result = firstNumber % secondNumber;
-                    operation = "%";
-                }
-                else
+                if (!int.TryParse(Console.ReadLine(), out int choice) || !InputValidator.IsValidChoice(choice))
                 {
                     Console.WriteLine("Invalid choice. Please run the program again.");
                     return;
                 }
 
-                // Result display
-                Console.WriteLine($"{firstNumber} {operation} {secondNumber} = {result}");
+                double result = 0;
+                string op = "";
+
+                switch(choice)
+                {
+                    case 1: result = engine.Add(firstNumber, secondNumber); op = "+"; break;
+                    case 2: result = engine.Subtract(firstNumber, secondNumber); op = "-"; break;
+                    case 3: result = engine.Multiply(firstNumber, secondNumber); op = "*"; break;
+                    case 4: result = engine.Divide(firstNumber, secondNumber); op = "/"; break;
+                    case 5: result = engine.Modulus(firstNumber, secondNumber); op = "%"; break;
+                }
+
+                Console.WriteLine($"{firstNumber} {op} {secondNumber} = {result}");
             }
-            catch (FormatException)
+            catch (DivideByZeroException)
             {
-                Console.WriteLine("Invalid input. Please enter numeric values.");
+                Console.WriteLine("Error: Cannot divide by zero.");
             }
             catch (Exception ex)
             {
@@ -94,8 +73,7 @@ namespace PersonalCalculator
             }
 
             Console.WriteLine("Thank you for using the calculator!");
-            Console.WriteLine("Press Enter to exit...");
-            Console.ReadLine(); // Keep console open
+            Console.ReadLine();
         }
     }
 }

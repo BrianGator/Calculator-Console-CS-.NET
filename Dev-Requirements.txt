@@ -12,7 +12,11 @@ A professional C# console-based calculator application implementing core arithme
 ## File Descriptions
 
 ### Core Application
-- **Program.cs**: Main entry point containing the calculator logic, input validation, and user interface. Written in C#.
+- **PersonalCalculator.sln**: Visual Studio Solution file linking projects.
+- **PersonalCalculator.csproj**: C# Project configuration.
+- **Program.cs**: Main entry point handling CLI flux.
+- **Models/CalculatorEngine.cs**: C# Class containing pure math logic.
+- **Helpers/InputValidator.cs**: C# Class for input sanitization and logic checks.
 
 ### Testing Frameworks (C# / .NET)
 - **Selenium-Tests/**: Automated UI tests using Selenium WebDriver for C#. Verifies user flows through a simulated console interface.

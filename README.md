@@ -12,8 +12,12 @@ This project is a comprehensive C# console-based calculator designed to illustra
 - **Professional Documentation**: Full development requirements and test reporting.
 
 ## Project Structure
-- `Program.cs`: Core application logic.
-- `Dev-Requirements.txt`: Detailed technical requirements and stack descriptions.
+- `PersonalCalculator.sln`: C# Solution.
+- `Models/`: Domain logic classes.
+- `Helpers/`: Validation utilities.
+- `Program.cs`: Entry point.
+- `Dev-Requirements.txt`: Technical specifications.
+- `test_report.md`: QA Summary.
 - `Selenium-Tests/`: 15 C# Selenium WebDriver tests.
 - `Playwright-Tests/`: 15 C# Playwright tests.
 - `Cypress-Tests/`: 15 JavaScript Cypress tests.
